@@ -1,8 +1,9 @@
 let images = [];
 let members = [];
+const memberNo = 20;
 
 function preload() {
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < memberNo; i++) {
     let img = loadImage(memberImages[i]);
     images.push(img);
   }
@@ -10,7 +11,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  for(let i = 0; i < 10; i++) {
+  for(let i = 0; i < memberNo; i++) {
     members.push(new Member());
   }
 }
@@ -30,13 +31,13 @@ function draw() {
     members[i].connectMembers(members.slice(i));
   }
 }
-setInterval(() => display(), 10*1000);
+// setInterval(() => display(), 10*1000);
 
 function display() {
   noLoop();
   let selectedMeber = members[0];
   scale(2.0);
   selectedMeber;
-  setTimeout(() => loop(), 5000);
+  // setTimeout(() => loop(), 5000);
   
 }
