@@ -22,22 +22,27 @@ function windowResized() {
 
 function draw() {
   background('white');
-  for(let i = 0; i < members.length; i++) {
-    push();
-    texture(images[i]);
-    members[i].createMember();
-    pop();
-    members[i].moveMember();
-    members[i].connectMembers(members.slice(i));
-  }
-}
-// setInterval(() => display(), 10*1000);
+  const fc = frameCount % (30 * 30);
 
-function display() {
-  noLoop();
-  let selectedMeber = members[0];
-  scale(2.0);
-  selectedMeber;
-  // setTimeout(() => loop(), 5000);
-  
+  if(fc >= 300) {
+    for(let i = 0; i < members.length; i++) {
+      push();
+      texture(images[i]);
+      members[i].createMember();
+      pop();
+      members[i].moveMember();
+    }
+    scale((fc - 300)/600);
+    fill(50);
+    rect(width/4 * -1, height/4 * -1, width/2, height/2);
+  } else {
+    for(let i = 0; i < members.length; i++) {
+      push();
+      texture(images[i]);
+      members[i].createMember();
+      pop();
+      members[i].moveMember();
+      members[i].connectMembers(members.slice(i));
+    }
+  }
 }
